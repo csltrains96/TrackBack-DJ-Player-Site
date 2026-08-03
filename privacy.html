@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — TrackBack</title>
+<meta name="description" content="TrackBack's privacy policy: what data the app collects, how it's used, and your choices.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #0a0a0f;
+  --surface:      #111118;
+  --surface2:     #1a1a24;
+  --border:       #2a2a3a;
+  --border-bright:#3a3a50;
+  --text:         #e8e8f0;
+  --text-muted:   #aaaacc;
+  --text-faint:   #7777aa;
+  --accent:       #e8c840;
+  --accent-dim:   rgba(232,200,64,0.12);
+  --accent-glow:  rgba(232,200,64,0.25);
+  --green:        #44dd88;
+  --radius:       8px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { opacity: 0.8; }
+
+/* ── NAV ─────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem; letter-spacing: 0.1em;
+  color: var(--accent);
+}
+.nav-logo span {
+  color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem; letter-spacing: 0.05em;
+  margin-left: 0.5rem;
+}
+.nav-links {
+  display: flex; gap: 2rem; align-items: center;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text-muted); font-size: 0.85rem;
+  letter-spacing: 0.03em; transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--text); opacity: 1; }
+.nav-cta {
+  background: var(--accent); color: #000 !important;
+  font-weight: 600; padding: 7px 18px;
+  border-radius: var(--radius); font-size: 0.85rem;
+  transition: opacity 0.15s;
+}
+.nav-cta:hover { opacity: 0.88 !important; }
+
+/* ── PAGE HEADER ─────────────────────────────────────────────── */
+.page-hero {
+  padding: 9rem 2rem 3rem;
+  max-width: 800px; margin: 0 auto;
+  text-align: left;
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem; letter-spacing: 0.2em;
+  color: var(--accent); text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.page-hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  letter-spacing: 0.05em;
+  line-height: 0.95;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.page-updated {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem; color: var(--text-faint);
+  letter-spacing: 0.03em;
+}
+
+/* ── CONTENT ──────────────────────────────────────────────────── */
+.policy {
+  max-width: 800px; margin: 0 auto;
+  padding: 1rem 2rem 6rem;
+}
+.policy-section {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border);
+}
+.policy-section:first-child { border-top: none; padding-top: 0; }
+.policy-section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: 0.04em; color: var(--text);
+  margin-bottom: 1rem;
+}
+.policy-section p {
+  font-size: 0.95rem; color: var(--text-muted);
+  line-height: 1.75; font-weight: 300;
+  margin-bottom: 1rem;
+}
+.policy-section p:last-child { margin-bottom: 0; }
+.policy-section ul {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 0.6rem;
+  margin: 1rem 0;
+}
+.policy-section li {
+  font-size: 0.95rem; color: var(--text-muted);
+  line-height: 1.6; font-weight: 300;
+  padding-left: 1.5rem; position: relative;
+}
+.policy-section li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--green); font-weight: 600;
+}
+.policy-section a { color: var(--accent); }
+.callout {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 1.5rem 1.75rem;
+  margin-top: 1.5rem;
+}
+.callout p { margin-bottom: 0; color: var(--text-muted); }
+.callout .label {
+  font-family: 'DM Mono', monospace; font-size: 0.68rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.6rem;
+  display: block;
+}
+
+/* ── FOOTER ───────────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem; letter-spacing: 0.1em;
+  color: var(--accent); margin-bottom: 0.75rem;
+}
+.footer-links {
+  display: flex; gap: 2rem; justify-content: center;
+  list-style: none; margin-bottom: 1.5rem;
+}
+.footer-links a {
+  font-size: 0.82rem; color: var(--text-faint);
+}
+.footer-links a:hover { color: var(--text-muted); opacity: 1; }
+.footer-copy {
+  font-size: 0.75rem; color: var(--text-faint);
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><a href="index.html" style="color:inherit;">TrackBack <span>DJ Player</span></a></div>
+  <ul class="nav-links">
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="mailto:hello@trackback.app">Contact</a></li>
+    <li><a href="index.html#pricing" class="nav-cta">Get TrackBack</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-hero">
+  <p class="hero-eyebrow">Legal</p>
+  <h1>PRIVACY POLICY</h1>
+  <p class="page-updated">Last updated: July 31, 2026</p>
+</div>
+
+<!-- POLICY CONTENT -->
+<div class="policy">
+
+  <div class="policy-section">
+    <h2>Overview</h2>
+    <p>
+      TrackBack is a desktop DJ music player for Windows. It's built to work with your
+      local music library on your own machine, and it collects very little data as a
+      result. This page explains what TrackBack does and doesn't do with your information.
+    </p>
+  </div>
+
+  <div class="policy-section">
+    <h2>What stays on your device</h2>
+    <p>
+      TrackBack scans and reads music files from folders you point it at. Your library,
+      playlists, playback position, ID3 tags, and app settings are stored locally on your
+      machine and are never uploaded to us.
+    </p>
+    <ul>
+      <li>Your music files and folder locations</li>
+      <li>ID3 tags and cached album art</li>
+      <li>Playlists, queue, and playback session state</li>
+      <li>App preferences (crossfade duration, gain, theme, etc.)</li>
+    </ul>
+  </div>
+
+  <div class="policy-section">
+    <h2>What does leave your device</h2>
+    <p>
+      A few features require a network request. These only fire when you actively use
+      them:
+    </p>
+    <ul>
+      <li>
+        <strong style="color:var(--text);">Album art lookup</strong> — when you search
+        for cover art, the search term is sent to Discogs and/or the MusicBrainz Cover
+        Art Archive to retrieve matching images.
+      </li>
+      <li>
+        <strong style="color:var(--text);">License activation</strong> — your license
+        key and a machine identifier are sent to our payment processor, Lemon Squeezy,
+        to validate your purchase and manage activations across machines.
+      </li>
+      <li>
+        <strong style="color:var(--text);">App updates</strong> — TrackBack checks for
+        new versions periodically. This request includes your current app version only.
+      </li>
+    </ul>
+    <div class="callout">
+      <span class="label">Not collected</span>
+      <p>
+        We don't collect analytics, usage telemetry, listening history, or any data
+        about the contents of your music library. TrackBack doesn't include ads or
+        third-party trackers.
+      </p>
+    </div>
+  </div>
+
+  <div class="policy-section">
+    <h2>Payment information</h2>
+    <p>
+      Purchases are processed entirely by <a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener">Lemon Squeezy</a>,
+      our merchant of record. We don't receive or store your card details — only
+      confirmation of a completed purchase and a license key.
+    </p>
+  </div>
+
+  <div class="policy-section">
+    <h2>Your choices</h2>
+    <ul>
+      <li>Album art lookup is optional and only runs when you trigger it manually.</li>
+      <li>You can decline automatic update checks in Settings.</li>
+      <li>Uninstalling TrackBack removes all locally stored app data.</li>
+    </ul>
+  </div>
+
+  <div class="policy-section">
+    <h2>Changes to this policy</h2>
+    <p>
+      If this policy changes, we'll update the date above and note material changes
+      in the app's release notes.
+    </p>
+  </div>
+
+  <div class="policy-section">
+    <h2>Contact</h2>
+    <p>
+      Questions about this policy or your data? Reach out at
+      <a href="mailto:hello@trackback.app">hello@trackback.app</a>.
+    </p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">TrackBack</div>
+  <ul class="footer-links">
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="mailto:hello@trackback.app">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 TrackBack. Built for DJs who love their library.</p>
+</footer>
+
+</body>
+</html>
