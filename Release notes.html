@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Release Notes — TrackBack</title>
+<meta name="description" content="What's new in TrackBack: version history, fixes, and features.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #0a0a0f;
+  --surface:      #111118;
+  --surface2:     #1a1a24;
+  --border:       #2a2a3a;
+  --border-bright:#3a3a50;
+  --text:         #e8e8f0;
+  --text-muted:   #aaaacc;
+  --text-faint:   #7777aa;
+  --accent:       #e8c840;
+  --accent-dim:   rgba(232,200,64,0.12);
+  --accent-glow:  rgba(232,200,64,0.25);
+  --green:        #44dd88;
+  --radius:       8px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { opacity: 0.8; }
+
+/* ── NAV ─────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem; letter-spacing: 0.1em;
+  color: var(--accent);
+}
+.nav-logo span {
+  color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem; letter-spacing: 0.05em;
+  margin-left: 0.5rem;
+}
+.nav-links {
+  display: flex; gap: 2rem; align-items: center;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text-muted); font-size: 0.85rem;
+  letter-spacing: 0.03em; transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--text); opacity: 1; }
+.nav-cta {
+  background: var(--accent); color: #000 !important;
+  font-weight: 600; padding: 7px 18px;
+  border-radius: var(--radius); font-size: 0.85rem;
+  transition: opacity 0.15s;
+}
+.nav-cta:hover { opacity: 0.88 !important; }
+
+/* ── PAGE HEADER ─────────────────────────────────────────────── */
+.page-hero {
+  padding: 9rem 2rem 3rem;
+  max-width: 800px; margin: 0 auto;
+  text-align: left;
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem; letter-spacing: 0.2em;
+  color: var(--accent); text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.page-hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  letter-spacing: 0.05em;
+  line-height: 0.95;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.page-hero .hero-sub {
+  font-size: 1rem; color: var(--text-muted);
+  max-width: 560px; font-weight: 300; line-height: 1.7;
+}
+
+/* ── CONTENT ──────────────────────────────────────────────────── */
+.log {
+  max-width: 800px; margin: 0 auto;
+  padding: 1rem 2rem 6rem;
+}
+.log-entry {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border);
+}
+.log-entry:first-child { border-top: none; padding-top: 0; }
+
+.log-entry-head {
+  display: flex; align-items: baseline; gap: 0.9rem;
+  flex-wrap: wrap; margin-bottom: 1.25rem;
+}
+.log-version {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: 0.04em; color: var(--text);
+}
+.log-tag {
+  font-family: 'DM Mono', monospace; font-size: 0.68rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: #000; background: var(--accent);
+  padding: 3px 10px; border-radius: 999px;
+}
+.log-tag.fix { background: var(--green); }
+.log-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem; color: var(--text-faint);
+  margin-left: auto;
+}
+
+.log-entry ul {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.log-entry li {
+  font-size: 0.95rem; color: var(--text-muted);
+  line-height: 1.6; font-weight: 300;
+  padding-left: 1.5rem; position: relative;
+}
+.log-entry li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--green); font-weight: 600;
+}
+.log-entry li.fix::before { content: '⚙'; color: var(--accent); }
+
+.callout {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 1.5rem 1.75rem;
+  margin-top: 0;
+}
+.callout p { margin-bottom: 0; color: var(--text-muted); font-size: 0.92rem; font-weight: 300; line-height: 1.7; }
+.callout .label {
+  font-family: 'DM Mono', monospace; font-size: 0.68rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.6rem;
+  display: block;
+}
+
+/* ── FOOTER ───────────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem; letter-spacing: 0.1em;
+  color: var(--accent); margin-bottom: 0.75rem;
+}
+.footer-links {
+  display: flex; gap: 2rem; justify-content: center;
+  flex-wrap: wrap;
+  list-style: none; margin-bottom: 1.5rem;
+}
+.footer-links a {
+  font-size: 0.82rem; color: var(--text-faint);
+}
+.footer-links a:hover { color: var(--text-muted); opacity: 1; }
+.footer-copy {
+  font-size: 0.75rem; color: var(--text-faint);
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .log-date { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><a href="index.html" style="color:inherit;">TrackBack <span>DJ Player</span></a></div>
+  <ul class="nav-links">
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="mailto:happyrelaxing02@gmail.com">Contact</a></li>
+    <li><a href="index.html#pricing" class="nav-cta">Get TrackBack</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-hero">
+  <p class="hero-eyebrow">Changelog</p>
+  <h1>RELEASE NOTES</h1>
+  <p class="hero-sub">
+    What's new, what's fixed, and what's changed in TrackBack — newest first.
+  </p>
+</div>
+
+<!-- LOG -->
+<div class="log">
+
+  <div class="log-entry">
+    <div class="log-entry-head">
+      <span class="log-version">v1.2</span>
+      <span class="log-tag fix">Fixes</span>
+      <span class="log-date">Latest</span>
+    </div>
+    <ul>
+      <li>Fixed a stubborn WebView2 bug where audio elements could fire a spurious "ended" event right after loading a previously-finished track, occasionally causing crossfades into an already-played song</li>
+      <li class="fix">Added a triple-guard system around track transitions to catch this class of phantom-end issue going forward</li>
+      <li>Fixed stale idle-slot preloads that could cause a crossfade into the wrong track</li>
+      <li>Added a self-crossfade guard to prevent a track from fading into itself</li>
+      <li>Narrowed overly broad "stuck" playback detection that was triggering false positives</li>
+      <li>Fixed an audible pop at the end of a fade-out</li>
+    </ul>
+  </div>
+
+  <div class="log-entry">
+    <div class="log-entry-head">
+      <span class="log-version">v1.1</span>
+      <span class="log-tag">Features</span>
+    </div>
+    <ul>
+      <li>Added session persistence — your playlist, playback position, and settings now survive lock, sleep, and app close</li>
+      <li>Added an ID3 tag cache with embedded album art, so re-opening a library you've already scanned is near-instant</li>
+      <li>Improved ID3 tag reading for older files using Windows-1252 encoding — em-dashes and curly quotes now display correctly instead of as garbled symbols</li>
+    </ul>
+  </div>
+
+  <div class="log-entry">
+    <div class="log-entry-head">
+      <span class="log-version">v1.0</span>
+      <span class="log-tag">Launch</span>
+    </div>
+    <ul>
+      <li>Initial release of TrackBack</li>
+      <li>Folder-based music library with automatic ID3 tag scanning</li>
+      <li>Dual-element crossfade engine with configurable duration</li>
+      <li>Real-time spectrum analyzer with zone-coloured gradients and peak hold</li>
+      <li>Album art lookup via Discogs and the MusicBrainz Cover Art Archive</li>
+      <li>Lightweight native Windows app, built on Tauri instead of Electron</li>
+    </ul>
+  </div>
+
+  <div class="log-entry">
+    <div class="callout">
+      <span class="label">Have a feature request or bug to report?</span>
+      <p>
+        Email <a href="mailto:happyrelaxing02@gmail.com" style="color:var(--accent);">happyrelaxing02@gmail.com</a>
+        or check the <a href="support.html" style="color:var(--accent);">support page</a> first — your issue may already have a fix on the way.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">TrackBack</div>
+  <ul class="footer-links">
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="license.html">License</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="release-notes.html">Release Notes</a></li>
+    <li><a href="mailto:happyrelaxing02@gmail.com">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 TrackBack. Built for DJs who love their library.  © 2026 Happy Relaxing.</p>
+</footer>
+
+</body>
+</html>
