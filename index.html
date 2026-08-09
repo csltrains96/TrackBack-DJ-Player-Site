@@ -396,8 +396,8 @@ footer {
   <ul class="nav-links">
     <li><a href="#features">Features</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="mailto:hello@trackback.app">Contact</a></li>
-    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="mailto:happyrelaxing02@gmail.com">Contact</a></li>
     <li><a href="#pricing" class="nav-cta">Get TrackBack</a></li>
   </ul>
 </nav>
@@ -427,7 +427,7 @@ footer {
 
   <p class="hero-meta">
     Windows 10/11 &nbsp;·&nbsp;
-    <span>v1.0.0</span> &nbsp;·&nbsp;
+    <span id="latestVersion">v1.2.0</span> &nbsp;·&nbsp;
     14-day free trial
   </p>
 </section>
@@ -559,10 +559,13 @@ footer {
         <li>14-day free trial, no card required</li>
         <li>Self-serve machine transfers</li>
       </ul>
-      <a href="#" class="btn-primary" style="width:100%;justify-content:center;font-size:0.95rem;">
+      <a href="https://github.com/csltrains96/TrackBack-DJ-Player-Releases/releases/latest/download/TrackBack-Setup.exe" class="btn-primary" style="width:100%;justify-content:center;font-size:0.95rem;">
         ⬇ Download Free Trial
       </a>
       <p class="trial-note">14 days free · No credit card · Windows 10/11</p>
+      <p class="trial-note">
+        <a href="https://github.com/csltrains96/TrackBack-DJ-Player-Releases/releases/latest/download/TrackBack-Setup.msi" style="color:var(--text-faint);">Prefer the .msi installer? Download here</a>
+      </p>
     </div>
   </div>
 </section>
@@ -581,6 +584,21 @@ footer {
   </ul>
   <p class="footer-copy">© 2026 TrackBack. Built for DJs who love their library.  © 2026 Happy Relaxing.</p>
 </footer>
+
+<script>
+// Pull the current version number from the latest GitHub release, so this
+// badge never needs manual updating after a new release is published.
+(function() {
+  fetch('https://api.github.com/repos/csltrains96/TrackBack-DJ-Player-Releases/releases/latest')
+    .then(r => r.ok ? r.json() : null)
+    .then(data => {
+      if (!data || !data.tag_name) return;
+      const el = document.getElementById('latestVersion');
+      if (el) el.textContent = data.tag_name.replace(/^v?/, 'v');
+    })
+    .catch(() => { /* fails silently, badge just keeps its hardcoded fallback */ });
+})();
+</script>
 
 <script>
 // Generate animated spectrum background in hero
